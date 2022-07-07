@@ -104,7 +104,7 @@ spec:
           - name: pa-tls-cert
             mountPath: /run/secrets/paw/tls-cert
         - name: wait-for-mysql-server
-          image: {{ .Values.docker_registry_prefix }}/mysql-cluster:2.0.167-ubi8
+          image: {{ .Values.docker_registry_prefix }}/mysql-cluster:2.0.162-ubi8
           command: ["/bin/bash"]
           args: ["-c", "/tools/wait-for-mysql-server.sh"]
           env:

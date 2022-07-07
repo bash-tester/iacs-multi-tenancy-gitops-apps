@@ -125,7 +125,7 @@ spec:
           imagePullPolicy: IfNotPresent
       containers:
         - name: redis-data2
-          image: {{ .Values.docker_registry_prefix }}/redis:1.0.176-ubi8
+          image: {{ .Values.docker_registry_prefix }}/redis:1.0.172-ubi8
           ports:
             - containerPort: 6379
               protocol: TCP
