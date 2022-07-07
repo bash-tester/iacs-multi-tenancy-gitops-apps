@@ -34,7 +34,7 @@ spec:
         name: monitor{{ .Values.instanceIdWithinNamespace }}
         pa-paw-secret-version: {{ .Values.secrets.pawSecretVersion }}
         release: {{ .Release.Name }}
-        version: "2.0.76.2602-ubi8"
+        version: "2.0.75.2580-ubi8"
         pa-cacerts-version: {{ .Values.secrets.cacertVersion }}
         pa-java-truststore-version: {{ .Values.secrets.javaTruststoreVersion }}
         pa-tls-version: {{ .Values.secrets.tlsCertVersion }}
@@ -109,7 +109,7 @@ spec:
             mountPath: /run/secrets/paw/tls-cert
       containers:
         - name: monitor
-          image: {{ .Values.docker_registry_prefix }}/monitor:2.0.76.2602-ubi8
+          image: {{ .Values.docker_registry_prefix }}/monitor:2.0.75.2580-ubi8
           ports:
             - containerPort: 9082
               protocol: TCP

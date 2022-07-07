@@ -35,7 +35,7 @@ spec:
         pa-cacerts-version: {{ .Values.secrets.cacertVersion }}
         pa-tls-version: {{ .Values.secrets.tlsCertVersion }}
         release: {{ .Release.Name }}
-        version: "2.0.167-ubi8"
+        version: "2.0.162-ubi8"
     spec:
       affinity:
         nodeAffinity:
@@ -121,7 +121,7 @@ spec:
           terminationMessagePolicy: File
           imagePullPolicy: IfNotPresent
         - name: mysql-data2-stunnel
-          image: {{ .Values.docker_registry_prefix }}/mysql-cluster:2.0.167-ubi8
+          image: {{ .Values.docker_registry_prefix }}/mysql-cluster:2.0.162-ubi8
           command: [ "/mysql-stunnel.sh", "mysql-data2" ]
           ports:
             - containerPort: 12202
@@ -148,7 +148,7 @@ spec:
           terminationMessagePolicy: File
           imagePullPolicy: IfNotPresent
         - name: mysql-data2
-          image: {{ .Values.docker_registry_prefix }}/mysql-cluster:2.0.167-ubi8
+          image: {{ .Values.docker_registry_prefix }}/mysql-cluster:2.0.162-ubi8
           args: ["ndbd"]          
           ports:
             - containerPort: 2202

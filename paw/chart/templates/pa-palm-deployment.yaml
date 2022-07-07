@@ -33,7 +33,7 @@ spec:
         helm.sh/chart: {{ .Chart.Name }}-{{ .Chart.Version | replace "+" "_" }}
         name: palm-service{{ .Values.instanceIdWithinNamespace }}
         release: {{ .Release.Name }}
-        version: "1.0.187-ubi8"
+        version: "1.0.183-ubi8"
     spec:
       affinity:
         nodeAffinity:
@@ -57,7 +57,7 @@ spec:
               topologyKey: kubernetes.io/paw
       containers:
         - name: palm-service
-          image: {{ .Values.docker_registry_prefix }}/palm-service:1.0.187-ubi8
+          image: {{ .Values.docker_registry_prefix }}/palm-service:1.0.183-ubi8
           ports:
             - containerPort: 9085
               protocol: TCP            

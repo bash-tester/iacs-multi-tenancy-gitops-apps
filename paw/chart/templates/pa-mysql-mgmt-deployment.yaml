@@ -33,7 +33,7 @@ spec:
         helm.sh/chart: {{ .Chart.Name }}-{{ .Chart.Version | replace "+" "_" }}
         name: mysql-mgmt{{ .Values.instanceIdWithinNamespace }}
         release: {{ .Release.Name }}
-        version: "2.0.167-ubi8"
+        version: "2.0.162-ubi8"
         pa-cacerts-version: {{ .Values.secrets.cacertVersion }}
         pa-tls-version: {{ .Values.secrets.tlsCertVersion }}
     spec:
@@ -111,7 +111,7 @@ spec:
           terminationMessagePolicy: File
           imagePullPolicy: IfNotPresent
         - name: mysql-mgmt-stunnel
-          image: {{ .Values.docker_registry_prefix }}/mysql-cluster:2.0.167-ubi8
+          image: {{ .Values.docker_registry_prefix }}/mysql-cluster:2.0.162-ubi8
           command: [ "/mysql-stunnel.sh", "mysql-mgmt" ]
           ports:
             - containerPort: 11186
@@ -138,7 +138,7 @@ spec:
           terminationMessagePolicy: File
           imagePullPolicy: IfNotPresent
         - name: mysql-mgmt
-          image: {{ .Values.docker_registry_prefix }}/mysql-cluster:2.0.167-ubi8
+          image: {{ .Values.docker_registry_prefix }}/mysql-cluster:2.0.162-ubi8
           args: ["ndb_mgmd", "--config-cache=FALSE"]                    
           ports:
             - containerPort: 1186

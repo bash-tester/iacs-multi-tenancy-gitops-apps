@@ -33,7 +33,7 @@ spec:
         helm.sh/chart: {{ .Chart.Name }}-{{ .Chart.Version | replace "+" "_" }}
         name: paw-ui-api{{ .Values.instanceIdWithinNamespace }}
         release: {{ .Release.Name }}
-        version: "1.0.147-ubi8"
+        version: "1.0.142-ubi8"
     spec:
       affinity:
         nodeAffinity:
@@ -57,7 +57,7 @@ spec:
               topologyKey: kubernetes.io/paw
       containers:
         - name: paw-ui-api
-          image: {{ .Values.docker_registry_prefix }}/paw-ui-api:1.0.147-ubi8
+          image: {{ .Values.docker_registry_prefix }}/paw-ui-api:1.0.142-ubi8
           ports:
             - containerPort: 3000
               protocol: TCP

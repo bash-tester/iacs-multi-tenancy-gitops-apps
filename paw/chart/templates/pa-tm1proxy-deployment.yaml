@@ -33,7 +33,7 @@ spec:
         helm.sh/chart: {{ .Chart.Name }}-{{ .Chart.Version | replace "+" "_" }}
         name: tm1proxy{{ .Values.instanceIdWithinNamespace }}
         release: {{ .Release.Name }}
-        version: "1.0.362-ubi8"
+        version: "1.0.358-ubi8"
         pa-cacerts-version: {{ .Values.secrets.cacertVersion }}
         pa-tls-version: {{ .Values.secrets.tlsCertVersion }}
     spec:
@@ -97,13 +97,13 @@ spec:
             mountPath: /run/secrets/paw/tls-cert
       containers:
         - name: tm1proxy
-          image: {{ .Values.docker_registry_prefix }}/tm1proxy:1.0.362-ubi8
+          image: {{ .Values.docker_registry_prefix }}/tm1proxy:1.0.358-ubi8
           ports:
             - containerPort: 1339
               protocol: TCP
           env:
             - name: TM1PROXY_VERSION
-              value: "1.0.362-ubi8"
+              value: "1.0.358-ubi8"
             - name: TM1PROXY_PORT
               value: "1339"
             - name: TM1PROXY_REDIS_SENTINEL

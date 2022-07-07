@@ -35,7 +35,7 @@ spec:
         helm.sh/chart: {{ .Chart.Name }}-{{ .Chart.Version | replace "+" "_" }}
         name: couchdb-data2{{ .Values.instanceIdWithinNamespace }}
         release: {{ .Release.Name }}
-        version: "193-ubi8"
+        version: "189-ubi8"
         lb: couchdb{{ .Values.instanceIdWithinNamespace }}
         pa-cacerts-version: {{ .Values.secrets.cacertVersion }}
         pa-tls-version: {{ .Values.secrets.tlsCertVersion }}
@@ -103,7 +103,7 @@ spec:
             mountPath: /run/secrets/paw/tls-cert
       containers:
         - name: couchdb-data2
-          image: {{ .Values.docker_registry_prefix }}/couchdb:193-ubi8
+          image: {{ .Values.docker_registry_prefix }}/couchdb:189-ubi8
           ports:
             - containerPort: 6984
               protocol: TCP

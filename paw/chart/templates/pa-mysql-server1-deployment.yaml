@@ -36,7 +36,7 @@ spec:
         lb: mysql-server{{ .Values.instanceIdWithinNamespace }}
         name: mysql-server1{{ .Values.instanceIdWithinNamespace }}
         release: {{ .Release.Name }}
-        version: "2.0.167-ubi8"
+        version: "2.0.162-ubi8"
         pa-cacerts-version: {{ .Values.secrets.cacertVersion }}
         pa-tls-version: {{ .Values.secrets.tlsCertVersion }}
     spec:
@@ -100,7 +100,7 @@ spec:
             mountPath: /run/secrets/paw/tls-cert
       containers:
         - name: mysql-server1-stunnel
-          image: {{ .Values.docker_registry_prefix }}/mysql-cluster:2.0.167-ubi8
+          image: {{ .Values.docker_registry_prefix }}/mysql-cluster:2.0.162-ubi8
           command: [ "/mysql-stunnel.sh", "mysql-server" ]
           ports:
             - containerPort: 11186
@@ -127,7 +127,7 @@ spec:
           terminationMessagePolicy: File
           imagePullPolicy: IfNotPresent
         - name: mysql-server1
-          image: {{ .Values.docker_registry_prefix }}/mysql-cluster:2.0.167-ubi8
+          image: {{ .Values.docker_registry_prefix }}/mysql-cluster:2.0.162-ubi8
           args: ["mysqld", "--log-error=/var/lib/mysql/log.err"]
           ports:
             - containerPort: 3306
