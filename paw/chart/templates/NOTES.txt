@@ -1,1 +1,12 @@
-To be determined
+#!/bin/bash
+
+cd ~/DownloadDirector       # (or wherever you downloaded PAW package)
+
+REGISTRY_HOST=$(oc get route default-route -n openshift-image-registry --template='{{ .spec.host }}')
+
+sudo podman login -u kubeadmin -p sha256~zXO_F5e0TOB3hE9x8BxPbkovy9q_Qso9INotjGh4kb0 --tls-verify=false $REGISTRY_HOST
+
+sudo podman tag 127.0.0.1:5000/planninganalytics/mysql-80:2.0.162-ubi8 $REGISTRY_HOST/dev/mysql-80:2.0.162-ubi8
+
+sudo podman push $REGISTRY_HOST/dev/mysql-80:2.0.162-ubi8
+
