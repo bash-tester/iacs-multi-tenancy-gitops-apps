@@ -36,7 +36,7 @@ spec:
         lb: mysql-server{{ .Values.instanceIdWithinNamespace }}
         name: mysql-server{{ .Values.instanceIdWithinNamespace }}
         release: {{ .Release.Name }}
-        version: "2.0.162-ubi8"
+        version: "2.0.167-ubi8"
         pa-cacerts-version: {{ .Values.secrets.cacertVersion }}
         pa-tls-version: {{ .Values.secrets.tlsCertVersion }}
     spec:
@@ -62,7 +62,7 @@ spec:
             secretName: {{ .Values.secrets.tlsCertSecretName }}{{ .Values.instanceIdWithinNamespace }}
       initContainers:
         - name: prepare-cacerts
-          image: {{ .Values.docker_registry_prefix }}/k8s-config:1.0.99-ubi8
+          image: {{ .Values.docker_registry_prefix }}/k8s-config:1.0.103-ubi8
           command: ["/bin/bash"]
           args: ["-c", "/opt/harmony/start.sh capem"]
           env:
@@ -89,7 +89,7 @@ spec:
             mountPath: /run/secrets/paw/tls-cert
       containers:
         - name: mysql-server-stunnel
-          image: {{ .Values.docker_registry_prefix }}/mysql-cluster:2.0.162-ubi8
+          image: {{ .Values.docker_registry_prefix }}/mysql-cluster:2.0.167-ubi8
           command: [ "/mysql-stunnel.sh", "mysql-server" ]
           ports:
             - containerPort: 11186
@@ -116,7 +116,7 @@ spec:
           terminationMessagePolicy: File
           imagePullPolicy: IfNotPresent
         - name: mysql-server
-          image: {{ .Values.docker_registry_prefix }}/mysql-cluster:2.0.162-ubi8
+          image: {{ .Values.docker_registry_prefix }}/mysql-cluster:2.0.167-ubi8
           args: ["mysqld", "--log-error=/var/lib/mysql/log.err"]
           ports:
             - containerPort: 3306

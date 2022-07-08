@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: paw-dev
+  name: paw-dev2
   annotations:
     argocd.argoproj.io/sync-wave: "300"
   labels:
@@ -10,18 +10,19 @@ metadata:
     - resources-finalizer.argocd.argoproj.io
 spec:
   destination:
-    namespace: dev
+    namespace: dev2
     server: https://kubernetes.default.svc
   project: applications
   source:
-    repoURL: https://github.com/Client-Engineering-Industry-Squad-1/iacs-multi-tenancy-gitops-apps.git
+    repoURL: https://github.com/bash-tester/new-iacs-multi-tenancy-gitops-apps
     path: paw/chart
     helm:
       parameters:
       - name: docker_registry_prefix
         value: image-registry.openshift-image-registry.svc:5000/dev
       - name: ingress.host
-        value: dev.ibmpeppa.com
+        value: dev2.ibmpeppa.com
+
   syncPolicy:
     automated:
       prune: true

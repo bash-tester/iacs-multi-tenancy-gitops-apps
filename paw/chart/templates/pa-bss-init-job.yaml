@@ -29,7 +29,7 @@ spec:
         helm.sh/chart: {{ .Chart.Name }}-{{ .Chart.Version | replace "+" "_" }}
         name: bss-init{{ .Values.instanceIdWithinNamespace }}
         release: {{ .Release.Name }}
-        version: "1.0.281-ubi8"
+        version: "1.0.286-ubi8"
     spec:
       affinity:
         nodeAffinity:
@@ -42,7 +42,7 @@ spec:
                 - {{ .Values.arch }}
       containers:
         - name: bss-init
-          image: {{ .Values.docker_registry_prefix }}/bss-init:1.0.281-ubi8
+          image: {{ .Values.docker_registry_prefix }}/bss-init:1.0.286-ubi8
           command: ["/bin/bash"]
           args: ["-c", "./run.sh"]
           env:

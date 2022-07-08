@@ -33,7 +33,7 @@ spec:
         helm.sh/chart: {{ .Chart.Name }}-{{ .Chart.Version | replace "+" "_" }}
         name: pa-predict{{ .Values.instanceIdWithinNamespace }}
         release: {{ .Release.Name }}
-        version: "1.0.762-ubi8"
+        version: "1.0.781-ubi8"
         pa-cacerts-version: {{ .Values.secrets.cacertVersion }}
         pa-java-truststore-version: {{ .Values.secrets.javaTruststoreVersion }}
     spec:
@@ -70,7 +70,7 @@ spec:
             secretName: pa-tls-cacerts{{ .Values.instanceIdWithinNamespace }}
       initContainers:
         - name: prepare-cacerts
-          image: {{ .Values.docker_registry_prefix }}/k8s-config:1.0.99-ubi8
+          image: {{ .Values.docker_registry_prefix }}/k8s-config:1.0.103-ubi8
           command: ["/bin/bash"]
           args: ["-c", "/opt/harmony/start.sh cajks"]
           env:
@@ -97,7 +97,7 @@ spec:
             mountPath: /run/secrets/paw/tls-cacerts
       containers:
         - name: pa-predict
-          image: {{ .Values.docker_registry_prefix }}/pa-predict-svc:1.0.762-ubi8
+          image: {{ .Values.docker_registry_prefix }}/pa-predict-svc:1.0.781-ubi8
           ports:
             - containerPort: 9610
               protocol: TCP

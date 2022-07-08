@@ -33,7 +33,7 @@ spec:
         helm.sh/chart: {{ .Chart.Name }}-{{ .Chart.Version | replace "+" "_" }}
         name: cdn{{ .Values.instanceIdWithinNamespace }}
         release: {{ .Release.Name }}
-        version: "3.0.6134-ubi8"
+        version: "3.0.6301-ubi8"
     spec:
       affinity:
         nodeAffinity:
@@ -57,7 +57,7 @@ spec:
               topologyKey: kubernetes.io/paw
       containers:
         - name: cdn
-          image: {{ .Values.docker_registry_prefix }}/pa-cdn:3.0.6134-ubi8
+          image: {{ .Values.docker_registry_prefix }}/pa-cdn:3.0.6301-ubi8
           ports:
             - containerPort: 8080
               protocol: TCP

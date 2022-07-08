@@ -33,7 +33,7 @@ spec:
         helm.sh/chart: {{ .Chart.Name }}-{{ .Chart.Version | replace "+" "_" }}
         name: mongo-data3{{ .Values.instanceIdWithinNamespace }}
         release: {{ .Release.Name }}
-        version: "1.0.168-ubi8"
+        version: "1.0.172-ubi8"
         pa-cacerts-version: {{ .Values.secrets.cacertVersion }}
         pa-tls-version: {{ .Values.secrets.tlsCertVersion }}
     spec:
@@ -78,7 +78,7 @@ spec:
             secretName: {{ .Values.secrets.tlsCertSecretName }}{{ .Values.instanceIdWithinNamespace }}
       initContainers:
         - name: prepare-cacerts
-          image: {{ .Values.docker_registry_prefix }}/k8s-config:1.0.99-ubi8
+          image: {{ .Values.docker_registry_prefix }}/k8s-config:1.0.103-ubi8
           command: ["/bin/bash"]
           args: ["-c", "/opt/harmony/start.sh capem"]
           env:
@@ -105,7 +105,7 @@ spec:
             mountPath: /run/secrets/paw/tls-cert
       containers:
         - name: wait-for-pods
-          image: {{ .Values.docker_registry_prefix }}/mongo:1.0.168-ubi8
+          image: {{ .Values.docker_registry_prefix }}/mongo:1.0.172-ubi8
           command: ["/bin/bash"]
           args: ["-c", "/tmp/wait-for-pods.sh"]
           ports:
@@ -133,7 +133,7 @@ spec:
           terminationMessagePolicy: File
           imagePullPolicy: IfNotPresent
         - name: mongo-data3
-          image: {{ .Values.docker_registry_prefix }}/mongo:1.0.168-ubi8
+          image: {{ .Values.docker_registry_prefix }}/mongo:1.0.172-ubi8
           command: ["/bin/bash"]
           args: ["-c", "exec /paw-entrypoint.sh mongod {{ .Values.mongo.options }} --replSet rs0"]
           ports:

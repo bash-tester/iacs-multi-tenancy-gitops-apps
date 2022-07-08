@@ -34,7 +34,7 @@ spec:
         name: wa-proxy{{ .Values.instanceIdWithinNamespace }}
         pa-paw-secret-version: {{ .Values.secrets.pawSecretVersion }}
         release: {{ .Release.Name }}
-        version: "1.0.848-ubi8"
+        version: "1.0.866-ubi8"
         pa-cacerts-version: {{ .Values.secrets.cacertVersion }}
         pa-tls-version: {{ .Values.secrets.tlsCertVersion }}
     spec:
@@ -77,7 +77,7 @@ spec:
             secretName: {{ .Values.secrets.tlsCertSecretName }}{{ .Values.instanceIdWithinNamespace }}
       initContainers:
         - name: prepare-cacerts
-          image: {{ .Values.docker_registry_prefix }}/k8s-config:1.0.99-ubi8
+          image: {{ .Values.docker_registry_prefix }}/k8s-config:1.0.103-ubi8
           command: ["/bin/bash"]
           args: ["-c", "/opt/harmony/start.sh capem"]
           env:
@@ -104,7 +104,7 @@ spec:
             mountPath: /run/secrets/paw/tls-cert
       containers:
         - name: wa-proxy
-          image: {{ .Values.docker_registry_prefix }}/wa-proxy:1.0.848-ubi8
+          image: {{ .Values.docker_registry_prefix }}/wa-proxy:1.0.866-ubi8
           ports:
             - containerPort: 1331
               protocol: TCP

@@ -33,7 +33,7 @@ spec:
         helm.sh/chart: {{ .Chart.Name }}-{{ .Chart.Version | replace "+" "_" }}
         name: prism-proxy{{ .Values.instanceIdWithinNamespace }}
         release: {{ .Release.Name }}
-        version: "3.0.10371-ubi8"
+        version: "3.0.10437-ubi8"
     spec:
       affinity:
         nodeAffinity:
@@ -57,7 +57,7 @@ spec:
               topologyKey: kubernetes.io/paw
       containers:
         - name: prism-proxy
-          image: {{ .Values.docker_registry_prefix }}/prism-proxy:3.0.10371-ubi8
+          image: {{ .Values.docker_registry_prefix }}/prism-proxy:3.0.10437-ubi8
           ports:
             - containerPort: 9090
               protocol: TCP
